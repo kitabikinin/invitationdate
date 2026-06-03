@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Go On A Date With Me? 🎀</title>
+    <title>Our Special Invitation 🎀</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
@@ -46,8 +46,7 @@
         .screen { display: none; }
         .active { display: flex; }
 
-        /* Kotak lebih gelap (Darker Maroon) */
-        .glass-card { background-color: #4A1515; border: 1px solid rgba(245, 218, 167, 0.1); box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .glass-card { background-color: #551a1a; border: 1px solid rgba(245, 218, 167, 0.1); box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
         .btn-primary { background-color: #7A2838; color: #F5DAA7; transition: 0.3s; }
         .btn-primary:hover { background-color: #5D1E2A; }
         
@@ -82,8 +81,8 @@
     <div id="screen-login" class="screen active flex-col items-center gap-6 text-center w-full max-w-sm">
         <div class="glass-card p-8 rounded-3xl w-full flex flex-col items-center gap-4">
             <div class="text-4xl">🔒</div>
-            <h1 class="text-2xl font-bold">A Secret Room...</h1>
-            <p class="text-sm opacity-80">Enter the magic numbers to unlock this little gift box.<br>(Hint: It's 213003)</p>
+            <h1 class="text-2xl font-bold">A Secret Just For You</h1>
+            <p class="text-sm opacity-80">Unlock the little invitation I made especially for you.<br>(Hint: It's 213003)</p>
             <input type="password" id="pw-input" class="w-full p-3 mt-2 rounded-xl bg-black/20 border border-[#F5DAA7]/30 outline-none text-center placeholder-[#F5DAA7]/30" placeholder="Enter password...">
             <button onclick="checkPassword()" class="btn-primary w-full py-3 rounded-xl font-bold tracking-widest uppercase text-sm">OPEN IT ✨</button>
         </div>
@@ -92,7 +91,7 @@
     <!-- Loading Page -->
     <div id="screen-loading" class="screen flex-col items-center gap-8 text-center p-6">
         <div class="heart-icon">💛</div>
-        <p id="loading-text" class="font-serif text-2xl italic tracking-wide">Preparing a special moment for you...</p>
+        <p id="loading-text" class="font-serif text-2xl italic tracking-wide">Weaving a little magic...</p>
         <div class="w-64 h-1 bg-[#662222] rounded-full overflow-hidden border border-[#F5DAA7]/20">
             <div id="progress" class="progress-bar h-full bg-[#F5DAA7]"></div>
         </div>
@@ -102,7 +101,8 @@
     <div id="screen-invite" class="screen flex-col items-center gap-6 text-center w-full max-w-sm">
         <div class="glass-card p-8 rounded-3xl w-full flex flex-col items-center gap-4">
             <p class="text-xs font-bold tracking-widest opacity-70 uppercase">The Main Event</p>
-            <h2 class="text-2xl font-bold">So... I was wondering...<br>Will you go on a date with me? 🥺</h2>
+            <h2 class="text-2xl font-bold">I've been dreaming about this...<br>Will you hold my hand on a date? 🥺</h2>
+            <p class="text-sm opacity-60 mt-2 italic">(Saying no is technically illegal in my heart. No cap. 🧢)</p>
             <div class="flex gap-4 mt-6 w-full justify-center">
                 <button onclick="nextScreen('screen-choices')" class="bg-[#A3485A] text-[#F5DAA7] px-8 py-3 rounded-xl font-bold hover:bg-[#842A3B] transition">Yasss! ✨</button>
                 <button id="no-btn" onmouseover="moveNoButton()" onclick="moveNoButton()" class="border border-[#F5DAA7]/30 text-[#F5DAA7] px-8 py-3 rounded-xl font-bold hover:bg-[#842A3B]">Nah 💀</button>
@@ -112,26 +112,26 @@
 
     <!-- Choice Page -->
     <div id="screen-choices" class="screen flex-col items-center gap-6 w-full max-w-2xl p-4">
-        <h2 class="text-3xl font-bold text-[#F5DAA7] text-center">Yay! Best decision ever. 💖</h2>
-        <p class="opacity-80">Now, what's the vibe? Pick our adventure:</p>
+        <h2 class="text-3xl font-bold text-[#F5DAA7] text-center">You just made my heart skip a beat! 💖</h2>
+        <p class="opacity-80">Now, how shall we spend our perfect day together?</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-4">
             <button onclick="selectActivity('Movie Date 🍿')" class="glass-card rounded-3xl overflow-hidden text-left hover:scale-[1.02] transition">
                 <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=400&h=200&auto=format&fit=crop" class="w-full h-40 object-cover">
                 <div class="p-6">
                     <div class="text-2xl mb-2 font-bold font-serif">🎞️ Movie Date 🍿</div>
-                    <p class="text-sm opacity-70">We can hold hands in the dark and pretend we're paying attention.</p>
+                    <p class="text-sm opacity-70">We can hold hands in the dark and pretend the movie is the only thing we're watching.</p>
                 </div>
             </button>
             <button onclick="selectActivity('Picnic Date 🧺')" class="glass-card rounded-3xl overflow-hidden text-left hover:scale-[1.02] transition">
                 <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?q=80&w=400&h=200&auto=format&fit=crop" class="w-full h-40 object-cover">
                 <div class="p-6">
                     <div class="text-2xl mb-2 font-bold font-serif">🧺 Picnic Date 🧺</div>
-                    <p class="text-sm opacity-70">Cute snacks, aesthetics, and I will protect you from the ants.</p>
+                    <p class="text-sm opacity-70">Just us, sweet snacks, and beautiful views. I promise to keep you safe from the ants.</p>
                 </div>
             </button>
         </div>
         <div class="glass-card w-full p-6 rounded-3xl mt-4 flex flex-col gap-4">
-            <p class="font-bold">💭 Or lowkey got another idea?</p>
+            <p class="font-bold">💭 Or perhaps you have a dreamy idea of your own?</p>
             <div class="flex gap-2">
                 <input type="text" id="other-activity" placeholder="Tell me what you wanna do..." class="w-full p-3 rounded-xl bg-black/20 border border-[#F5DAA7]/30 outline-none">
                 <button onclick="saveActivity()" class="bg-[#A3485A] px-6 rounded-xl font-bold">→</button>
@@ -142,7 +142,7 @@
     <!-- Date Page -->
     <div id="screen-date" class="screen flex-col items-center gap-6 w-full max-w-sm p-4">
         <div class="glass-card p-8 rounded-3xl w-full flex flex-col gap-6 shadow-2xl">
-            <h3 class="text-2xl font-bold title-font text-center">Perfect Choice.<br>Now, when are we making this happen? 📅</h3>
+            <h3 class="text-2xl font-bold title-font text-center">The best choice, truly.<br>When are you free for our adventure? 📅</h3>
             <div class="flex flex-col gap-2">
                 <label class="text-xs font-bold opacity-70">Pick a Date</label>
                 <input type="date" id="date-picker" class="w-full p-4 rounded-xl bg-[#662222] border border-[#A3485A] outline-none text-[#F5DAA7]">
@@ -158,8 +158,8 @@
     <!-- Summary Page -->
     <div id="screen-summary" class="screen flex-col items-center gap-6 text-center p-8 glass-card rounded-3xl shadow-2xl max-w-sm w-full">
         <div class="check-icon"></div>
-        <h2 class="text-3xl font-bold title-font">It's a Date! 🎉</h2>
-        <p class="opacity-70 text-sm italic">"Send this to me so I can add it to my calendar and brag about it."</p>
+        <h2 class="text-3xl font-bold title-font">Our romantic date is set! 🎉</h2>
+        <p class="opacity-70 text-sm italic">"Counting down the seconds until I get to see you."</p>
         <div class="w-full mt-4 flex flex-col gap-1">
             <div class="notebook-row"><span class="text-[10px] opacity-60 font-bold">PLAN:</span><span id="sum-plan" class="font-bold"></span></div>
             <div class="notebook-row"><span class="text-[10px] opacity-60 font-bold">DATE:</span><span id="sum-date" class="font-bold"></span></div>
@@ -185,15 +185,19 @@
             if(document.getElementById('pw-input').value === '213003') {
                 showScreen('screen-loading');
                 startLoading();
-            } else { alert('Wrong password bestie!'); }
+            } else { alert('Wrong password, my love!'); }
         }
 
         function startLoading() {
+            const msgs = ["Weaving a little magic...", "Checking the stars for our date...", "Writing our love story..."];
+            let i = 0;
+            const textEl = document.getElementById('loading-text');
             const prog = document.getElementById('progress');
             let width = 0;
             let bar = setInterval(() => {
                 width += 1;
                 prog.style.width = width + "%";
+                if(width % 35 === 0) textEl.innerText = msgs[(width/35)];
                 if(width >= 100) { clearInterval(bar); showScreen('screen-invite'); }
             }, 30);
         }
@@ -229,7 +233,7 @@
         function finishDate() {
             dateData.date = document.getElementById('date-picker').value;
             dateData.time = document.getElementById('time-picker').value;
-            if(!dateData.date || !dateData.time) return alert("Pick date and time!");
+            if(!dateData.date || !dateData.time) return alert("Please pick a date and time, sunshine!");
             document.getElementById('sum-plan').innerText = dateData.activity;
             document.getElementById('sum-date').innerText = dateData.date;
             document.getElementById('sum-time').innerText = dateData.time;
@@ -237,8 +241,7 @@
         }
 
         function sendToWA() {
-            window.open(`https://wa.me/?text=${encodeURIComponent('Our date: ' + dateData.activity + ' on ' + dateData.date + ' at ' + dateData.time)}`, '_blank');
+            window.open(`https://wa.me/?text=${encodeURIComponent('Our date: ' + dateData.activity + ' on ' + dateData.date + ' at ' + dateData.time + '. Counting down the seconds!')}`, '_blank');
         }
     </script>
 </body>
-</html>
