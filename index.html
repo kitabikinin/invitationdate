@@ -46,19 +46,13 @@
         .screen { display: none; }
         .active { display: flex; }
 
-        .btn-primary { background-color: #A3485A; color: #F5DAA7; transition: 0.3s; }
-        .btn-primary:hover { background-color: #842A3B; }
+        /* Kotak lebih gelap (Darker Maroon) */
+        .glass-card { background-color: #4A1515; border: 1px solid rgba(245, 218, 167, 0.1); box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .btn-primary { background-color: #7A2838; color: #F5DAA7; transition: 0.3s; }
+        .btn-primary:hover { background-color: #5D1E2A; }
         
-        .glass-card { background-color: #842A3B; border: 1px solid rgba(245, 218, 167, 0.2); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
         .progress-bar { width: 0%; transition: width 0.3s; }
 
-        input[type="date"]::-webkit-calendar-picker-indicator,
-        input[type="time"]::-webkit-calendar-picker-indicator {
-            filter: invert(1);
-            opacity: 0.6;
-        }
-
-        /* Page 6 Notebook Styling */
         .notebook-row {
             border-bottom: 1.5px solid rgba(245, 218, 167, 0.3);
             padding: 12px 0 4px 0;
@@ -67,30 +61,10 @@
             align-items: flex-end;
         }
 
-        /* Check Animation */
-        .success-checkmark {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto;
-        }
-        .check-icon {
-            width: 80px;
-            height: 80px;
-            position: relative;
-            border-radius: 50%;
-            box-sizing: content-box;
-            border: 4px solid #F5DAA7;
-        }
+        .check-icon { width: 80px; height: 80px; position: relative; border-radius: 50%; border: 4px solid #F5DAA7; }
         .check-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(45deg);
-            width: 15px;
-            height: 30px;
-            border-right: 4px solid #F5DAA7;
-            border-bottom: 4px solid #F5DAA7;
+            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(45deg);
+            width: 15px; height: 30px; border-right: 4px solid #F5DAA7; border-bottom: 4px solid #F5DAA7;
             animation: check-draw 0.8s ease-out;
         }
         @keyframes check-draw {
@@ -104,18 +78,18 @@
 
     <div id="hearts-container"></div>
 
-    <!-- Login Screen (Page 1) -->
+    <!-- Pw Page -->
     <div id="screen-login" class="screen active flex-col items-center gap-6 text-center w-full max-w-sm">
         <div class="glass-card p-8 rounded-3xl w-full flex flex-col items-center gap-4">
             <div class="text-4xl">🔒</div>
             <h1 class="text-2xl font-bold">A Secret Room...</h1>
             <p class="text-sm opacity-80">Enter the magic numbers to unlock this little gift box.<br>(Hint: It's 213003)</p>
-            <input type="password" id="pw-input" class="w-full p-3 mt-2 rounded-xl bg-transparent border border-[#F5DAA7]/50 outline-none text-center placeholder-[#F5DAA7]/50" placeholder="Enter password...">
+            <input type="password" id="pw-input" class="w-full p-3 mt-2 rounded-xl bg-black/20 border border-[#F5DAA7]/30 outline-none text-center placeholder-[#F5DAA7]/30" placeholder="Enter password...">
             <button onclick="checkPassword()" class="btn-primary w-full py-3 rounded-xl font-bold tracking-widest uppercase text-sm">OPEN IT ✨</button>
         </div>
     </div>
 
-    <!-- Loading Screen (Page 2) -->
+    <!-- Loading Page -->
     <div id="screen-loading" class="screen flex-col items-center gap-8 text-center p-6">
         <div class="heart-icon">💛</div>
         <p id="loading-text" class="font-serif text-2xl italic tracking-wide">Preparing a special moment for you...</p>
@@ -124,12 +98,11 @@
         </div>
     </div>
 
-    <!-- Invitation Screen (Page 3) -->
+    <!-- Invitation Page -->
     <div id="screen-invite" class="screen flex-col items-center gap-6 text-center w-full max-w-sm">
         <div class="glass-card p-8 rounded-3xl w-full flex flex-col items-center gap-4">
             <p class="text-xs font-bold tracking-widest opacity-70 uppercase">The Main Event</p>
             <h2 class="text-2xl font-bold">So... I was wondering...<br>Will you go on a date with me? 🥺</h2>
-            <p class="text-sm opacity-80 mt-2">(This is a highly exclusive invitation. Saying no is technically illegal in 14 countries. No cap. 🧢)</p>
             <div class="flex gap-4 mt-6 w-full justify-center">
                 <button onclick="nextScreen('screen-choices')" class="bg-[#A3485A] text-[#F5DAA7] px-8 py-3 rounded-xl font-bold hover:bg-[#842A3B] transition">Yasss! ✨</button>
                 <button id="no-btn" onmouseover="moveNoButton()" onclick="moveNoButton()" class="border border-[#F5DAA7]/30 text-[#F5DAA7] px-8 py-3 rounded-xl font-bold hover:bg-[#842A3B]">Nah 💀</button>
@@ -137,208 +110,134 @@
         </div>
     </div>
 
-    <!-- Choices Screen (Page 4) -->
+    <!-- Choice Page -->
     <div id="screen-choices" class="screen flex-col items-center gap-6 w-full max-w-2xl p-4">
         <h2 class="text-3xl font-bold text-[#F5DAA7] text-center">Yay! Best decision ever. 💖</h2>
-        <p class="text-[#F5DAA7]/80 text-center">Now, what's the vibe? Pick our adventure:</p>
+        <p class="opacity-80">Now, what's the vibe? Pick our adventure:</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-4">
-            <button onclick="selectActivity('Movie Date 🍿')" class="bg-[#842A3B] rounded-3xl overflow-hidden text-left hover:scale-[1.02] transition border border-[#F5DAA7]/20 shadow-lg">
-                <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=400&h=200&auto=format&fit=crop" alt="Movie" class="w-full h-40 object-cover">
+            <button onclick="selectActivity('Movie Date 🍿')" class="glass-card rounded-3xl overflow-hidden text-left hover:scale-[1.02] transition">
+                <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=400&h=200&auto=format&fit=crop" class="w-full h-40 object-cover">
                 <div class="p-6">
                     <div class="text-2xl mb-2 font-bold font-serif">🎞️ Movie Date 🍿</div>
-                    <p class="text-sm opacity-80">We can hold hands in the dark and pretend we're paying attention.</p>
+                    <p class="text-sm opacity-70">We can hold hands in the dark and pretend we're paying attention.</p>
                 </div>
             </button>
-            <button onclick="selectActivity('Picnic Date 🧺')" class="bg-[#842A3B] rounded-3xl overflow-hidden text-left hover:scale-[1.02] transition border border-[#F5DAA7]/20 shadow-lg">
-                <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?q=80&w=400&h=200&auto=format&fit=crop" alt="Picnic" class="w-full h-40 object-cover">
+            <button onclick="selectActivity('Picnic Date 🧺')" class="glass-card rounded-3xl overflow-hidden text-left hover:scale-[1.02] transition">
+                <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?q=80&w=400&h=200&auto=format&fit=crop" class="w-full h-40 object-cover">
                 <div class="p-6">
                     <div class="text-2xl mb-2 font-bold font-serif">🧺 Picnic Date 🧺</div>
-                    <p class="text-sm opacity-80">Cute snacks, aesthetics, and I will protect you from the ants.</p>
+                    <p class="text-sm opacity-70">Cute snacks, aesthetics, and I will protect you from the ants.</p>
                 </div>
             </button>
         </div>
-        <div class="bg-[#842A3B] p-6 rounded-3xl w-full border border-[#F5DAA7]/20 shadow-lg">
-            <p class="mb-4">💬 Or lowkey got another idea?</p>
+        <div class="glass-card w-full p-6 rounded-3xl mt-4 flex flex-col gap-4">
+            <p class="font-bold">💭 Or lowkey got another idea?</p>
             <div class="flex gap-2">
-                <input type="text" id="other-activity" placeholder="Tell me what you wanna do..." class="flex-grow p-3 rounded-xl bg-[#662222] border border-[#A3485A] outline-none">
-                <button onclick="saveActivity()" class="bg-[#A3485A] px-6 py-3 rounded-xl hover:bg-[#F5DAA7] hover:text-[#662222] transition">➔</button>
+                <input type="text" id="other-activity" placeholder="Tell me what you wanna do..." class="w-full p-3 rounded-xl bg-black/20 border border-[#F5DAA7]/30 outline-none">
+                <button onclick="saveActivity()" class="bg-[#A3485A] px-6 rounded-xl font-bold">→</button>
             </div>
         </div>
     </div>
 
-    <!-- Date Selection Screen (Page 5) -->
+    <!-- Date Page -->
     <div id="screen-date" class="screen flex-col items-center gap-6 w-full max-w-sm p-4">
         <div class="glass-card p-8 rounded-3xl w-full flex flex-col gap-6 shadow-2xl">
-            <div class="text-center">
-                <h3 class="text-3xl font-bold title-font">Perfect Choice.</h3>
-                <p class="opacity-80">Now, when are we making this happen? 📅</p>
-            </div>
-            <div class="flex flex-col gap-4">
-                <label class="font-bold text-xs uppercase tracking-wider opacity-70">📅 Pick a Date</label>
+            <h3 class="text-2xl font-bold title-font text-center">Perfect Choice.<br>Now, when are we making this happen? 📅</h3>
+            <div class="flex flex-col gap-2">
+                <label class="text-xs font-bold opacity-70">Pick a Date</label>
                 <input type="date" id="date-picker" class="w-full p-4 rounded-xl bg-[#662222] border border-[#A3485A] outline-none text-[#F5DAA7]">
-                
-                <label class="font-bold text-xs uppercase tracking-wider opacity-70">🕒 Pick a Time</label>
+            </div>
+            <div class="flex flex-col gap-2">
+                <label class="text-xs font-bold opacity-70">Pick a Time</label>
                 <input type="time" id="time-picker" class="w-full p-4 rounded-xl bg-[#662222] border border-[#A3485A] outline-none text-[#F5DAA7]">
             </div>
             <button onclick="finishDate()" class="btn-primary w-full py-4 rounded-xl font-bold text-lg shadow-lg">LOCK IT IN 🔒</button>
         </div>
     </div>
 
-    <!-- Summary Screen (Page 6 - Updated Detailed Design) -->
-    <div id="screen-summary" class="screen flex-col items-center gap-6 text-center p-8 glass-card rounded-3xl shadow-2xl max-w-sm w-full animate-in zoom-in duration-500">
-        <!-- Animated Check Icon -->
-        <div class="success-checkmark">
-            <div class="check-icon"></div>
-        </div>
-
-        <div class="mt-2">
-            <h2 class="text-3xl font-bold title-font">It's a Date! 🧸</h2>
-            <p class="opacity-80 text-sm italic">I'm literally smiling at my screen right now.</p>
-        </div>
-        
-        <!-- Notebook Paper Style Data Display -->
+    <!-- Summary Page -->
+    <div id="screen-summary" class="screen flex-col items-center gap-6 text-center p-8 glass-card rounded-3xl shadow-2xl max-w-sm w-full">
+        <div class="check-icon"></div>
+        <h2 class="text-3xl font-bold title-font">It's a Date! 🎉</h2>
+        <p class="opacity-70 text-sm italic">"Send this to me so I can add it to my calendar and brag about it."</p>
         <div class="w-full mt-4 flex flex-col gap-1">
-            <div class="notebook-row">
-                <span class="text-[10px] uppercase tracking-tighter opacity-60 font-bold">PLAN:</span>
-                <span id="sum-plan" class="font-serif text-lg font-bold"></span>
-            </div>
-            <div class="notebook-row">
-                <span class="text-[10px] uppercase tracking-tighter opacity-60 font-bold">DATE:</span>
-                <span id="sum-date" class="font-serif text-lg font-bold"></span>
-            </div>
-            <div class="notebook-row">
-                <span class="text-[10px] uppercase tracking-tighter opacity-60 font-bold">TIME:</span>
-                <span id="sum-time" class="font-serif text-lg font-bold"></span>
-            </div>
+            <div class="notebook-row"><span class="text-[10px] opacity-60 font-bold">PLAN:</span><span id="sum-plan" class="font-bold"></span></div>
+            <div class="notebook-row"><span class="text-[10px] opacity-60 font-bold">DATE:</span><span id="sum-date" class="font-bold"></span></div>
+            <div class="notebook-row"><span class="text-[10px] opacity-60 font-bold">TIME:</span><span id="sum-time" class="font-bold"></span></div>
         </div>
-
-        <p class="text-[11px] opacity-70 italic mt-4">"Send this to me so I can add it to my calendar and brag about it."</p>
-        
-        <button onclick="sendToWA()" class="w-full bg-[#25D366] text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:brightness-110 transition shadow-lg mt-2">
-            <span class="text-xl">💬</span> Send to WhatsApp
-        </button>
+        <button onclick="sendToWA()" class="w-full bg-[#25D366] text-white py-4 rounded-2xl font-bold">Send to WhatsApp</button>
     </div>
 
     <script>
         const heartsContainer = document.getElementById('hearts-container');
-        for(let i=0; i<15; i++) {
+        for(let i=0; i<30; i++) {
             const h = document.createElement('div');
             h.innerHTML = '♥';
             h.className = 'heart-bg';
             h.style.left = Math.random() * 100 + 'vw';
             h.style.top = Math.random() * 100 + 'vh';
             h.style.fontSize = (Math.random() * 30 + 20) + 'px';
-            h.style.animationDelay = (Math.random() * 5) + 's';
+            h.style.animationDelay = (Math.random() * 10) + 's';
             heartsContainer.appendChild(h);
         }
 
         function checkPassword() {
-            const input = document.getElementById('pw-input');
-            if(input.value === '213003') {
+            if(document.getElementById('pw-input').value === '213003') {
                 showScreen('screen-loading');
                 startLoading();
-            } else {
-                alert('Wrong password bestie!');
-            }
+            } else { alert('Wrong password bestie!'); }
         }
 
         function startLoading() {
-            const msgs = ["Painting a future with you...", "Checking the stars for our date...", "Getting everything ready just for you..."];
-            let i = 0;
-            const textEl = document.getElementById('loading-text');
             const prog = document.getElementById('progress');
-            let interval = setInterval(() => { textEl.innerText = msgs[i++ % msgs.length]; }, 1200);
             let width = 0;
             let bar = setInterval(() => {
                 width += 1;
                 prog.style.width = width + "%";
-                if(width >= 100) { clearInterval(interval); clearInterval(bar); showScreen('screen-invite'); }
-            }, 40);
+                if(width >= 100) { clearInterval(bar); showScreen('screen-invite'); }
+            }, 30);
         }
 
         function moveNoButton() {
             const btn = document.getElementById('no-btn');
             btn.style.position = 'absolute';
-            btn.style.left = Math.random() * 80 + 'vw';
-            btn.style.top = Math.random() * 80 + 'vh';
+            btn.style.left = Math.random() * 70 + 'vw';
+            btn.style.top = Math.random() * 70 + 'vh';
         }
 
         function showScreen(id) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            if(id === 'screen-summary') { 
-                fireFlowerConfetti(); 
-            }
+            if(id === 'screen-summary') fireFlowerConfetti();
         }
 
-        // Flower Confetti Logic
         function fireFlowerConfetti() {
-            const duration = 3 * 1000;
+            const duration = 3000;
             const animationEnd = Date.now() + duration;
-            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
-
-            function randomInRange(min, max) {
-              return Math.random() * (max - min) + min;
-            }
-
             const interval = setInterval(function() {
-              const timeLeft = animationEnd - Date.now();
-
-              if (timeLeft <= 0) {
-                return clearInterval(interval);
-              }
-
-              const particleCount = 20 * (timeLeft / duration);
-              // Menciptakan efek bunga dengan menggunakan emoji di confetti
-              confetti({
-                ...defaults,
-                particleCount,
-                origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-                shapes: ['text'],
-                shapeOptions: { text: { value: ['🌸', '🌼', '🌺', '🌹'] } },
-                scalar: randomInRange(1, 2)
-              });
-              confetti({
-                ...defaults,
-                particleCount,
-                origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-                shapes: ['text'],
-                shapeOptions: { text: { value: ['🌸', '🌼', '🌺', '🌻'] } },
-                scalar: randomInRange(1, 2)
-              });
+                if (Date.now() > animationEnd) return clearInterval(interval);
+                confetti({ particleCount: 15, spread: 360, origin: { x: Math.random(), y: Math.random() - 0.2 }, shapes: ['text'], shapeOptions: { text: { value: ['🌸','🌼','🌺','🌹'] } }, scalar: 2 });
             }, 250);
         }
 
         function nextScreen(id) { showScreen(id); }
-
-        function selectActivity(act) {
-            dateData.activity = act;
-            showScreen('screen-date');
-        }
-
-        function saveActivity() {
-            const other = document.getElementById('other-activity').value;
-            dateData.activity = other || "Surprise Date";
-            showScreen('screen-date');
-        }
+        function selectActivity(act) { dateData.activity = act; showScreen('screen-date'); }
+        function saveActivity() { dateData.activity = document.getElementById('other-activity').value || "Surprise Date"; showScreen('screen-date'); }
 
         let dateData = { activity: '', date: '', time: '' };
 
         function finishDate() {
             dateData.date = document.getElementById('date-picker').value;
             dateData.time = document.getElementById('time-picker').value;
-            if(!dateData.date || !dateData.time) { alert("Please pick a date and time!"); return; }
-            
+            if(!dateData.date || !dateData.time) return alert("Pick date and time!");
             document.getElementById('sum-plan').innerText = dateData.activity;
             document.getElementById('sum-date').innerText = dateData.date;
             document.getElementById('sum-time').innerText = dateData.time;
-            
             showScreen('screen-summary');
         }
 
         function sendToWA() {
-            const msg = `Hey! I'm so excited for our date! We are doing ${dateData.activity} on ${dateData.date} at ${dateData.time}. See you then! ✨💖`;
-            window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+            window.open(`https://wa.me/?text=${encodeURIComponent('Our date: ' + dateData.activity + ' on ' + dateData.date + ' at ' + dateData.time)}`, '_blank');
         }
     </script>
 </body>
