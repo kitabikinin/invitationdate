@@ -140,37 +140,37 @@
         </div>
     </div>
 
-    <!-- Date Page -->
-    <div id="screen-date" class="screen flex-col items-center gap-6 w-full max-w-sm p-4">
-        <div class="glass-card p-8 rounded-3xl w-full flex flex-col gap-6 shadow-2xl">
-            <button onclick="goBack()" class="text-sm opacity-60 hover:opacity-100">← Back</button>
-            <h3 class="text-2xl font-bold title-font text-center">Perfect Choice.<br>Now, when are we making this happen? 📅</h3>
-            <div class="flex flex-col gap-2">
-                <label class="text-xs font-bold opacity-70">Pick a Date</label>
-                <input type="date" id="date-picker" class="w-full p-4 rounded-xl bg-[#662222] border border-[#A3485A] outline-none text-[#F5DAA7]">
-            </div>
-            <div class="flex flex-col gap-2">
-                <label class="text-xs font-bold opacity-70">Pick a Time</label>
-                <input type="time" id="time-picker" class="w-full p-4 rounded-xl bg-[#662222] border border-[#A3485A] outline-none text-[#F5DAA7]">
-            </div>
-            <button onclick="finishDate()" class="btn-primary w-full py-4 rounded-xl font-bold text-lg shadow-lg">LOCK IT IN 🔒</button>
+    <!-- Date Page (Sudah diperbesar) -->
+<div id="screen-date" class="screen flex-col items-center gap-6 w-full max-w-md p-4">
+    <div class="glass-card p-10 rounded-3xl w-full flex flex-col gap-6 shadow-2xl">
+        <button onclick="goBack()" class="text-sm opacity-60 hover:opacity-100">← Back</button>
+        <h3 class="text-2xl font-bold title-font text-center">Perfect Choice.<br>Now, when are we making this happen? 📅</h3>
+        <div class="flex flex-col gap-2">
+            <label class="text-xs font-bold opacity-70">Pick a Date</label>
+            <input type="date" id="date-picker" class="w-full p-4 rounded-xl bg-[#662222] border border-[#A3485A] outline-none text-[#F5DAA7]">
         </div>
-    </div>
-
-    <!-- Summary Page -->
-    <div id="screen-summary" class="screen flex-col items-center gap-6 text-center p-8 glass-card rounded-3xl shadow-2xl max-w-sm w-full">
-        <button onclick="goBack()" class="text-sm opacity-60 hover:opacity-100 self-start">← Back</button>
-        <div class="check-icon"></div>
-        <h2 class="text-3xl font-bold title-font">It's a Date! 🥳</h2>
-        <p class="opacity-70 text-sm italic">"I'm literally smiling at my screen right now."</p>
-        <div class="w-full mt-4 flex flex-col gap-1">
-            <div class="notebook-row"><span class="text-[10px] opacity-60 font-bold">PLAN:</span><span id="sum-plan" class="font-bold"></span></div>
-            <div class="notebook-row"><span class="text-[10px] opacity-60 font-bold">DATE:</span><span id="sum-date" class="font-bold"></span></div>
-            <div class="notebook-row"><span class="text-[10px] opacity-60 font-bold">TIME:</span><span id="sum-time" class="font-bold"></span></div>
+        <div class="flex flex-col gap-2">
+            <label class="text-xs font-bold opacity-70">Pick a Time</label>
+            <input type="time" id="time-picker" class="w-full p-4 rounded-xl bg-[#662222] border border-[#A3485A] outline-none text-[#F5DAA7]">
         </div>
-        <button onclick="sendToWA()" class="w-full bg-[#25D366] text-white py-4 rounded-2xl font-bold">Send to WhatsApp</button>
+        <button onclick="finishDate()" class="btn-primary w-full py-4 rounded-xl font-bold text-lg shadow-lg">LOCK IT IN 🔒</button>
     </div>
+</div>
 
+    <!-- Summary Page (Sudah diperbesar) -->
+<div id="screen-summary" class="screen flex-col items-center gap-6 text-center p-10 glass-card rounded-3xl shadow-2xl max-w-md w-full">
+    <button onclick="goBack()" class="text-sm opacity-60 hover:opacity-100 self-start">← Back</button>
+    <div class="check-icon"></div>
+    <h2 class="text-3xl font-bold title-font">It's a Date! 🥳</h2>
+    <p class="opacity-70 text-sm italic">"I'm literally smiling at my screen right now."</p>
+    <div class="w-full mt-4 flex flex-col gap-1">
+        <div class="notebook-row"><span class="text-[10px] opacity-60 font-bold">PLAN:</span><span id="sum-plan" class="font-bold"></span></div>
+        <div class="notebook-row"><span class="text-[10px] opacity-60 font-bold">DATE:</span><span id="sum-date" class="font-bold"></span></div>
+        <div class="notebook-row"><span class="text-[10px] opacity-60 font-bold">TIME:</span><span id="sum-time" class="font-bold"></span></div>
+    </div>
+    <button onclick="sendToWA()" class="w-full bg-[#25D366] text-white py-4 rounded-2xl font-bold">Send to WhatsApp</button>
+</div>
+    
     <script>
         const heartsContainer = document.getElementById('hearts-container');
         for(let i=0; i<30; i++) {
